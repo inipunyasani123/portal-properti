@@ -2,7 +2,7 @@
 
 PortalProperti: 4 template marketplace properti dengan kepribadian berbeda — editorial, proptech, luxury, dan hangat.
 
-**Demo live:** https://www.pintuweb.com/website-properti
+**Demo live:** https://www.pintuweb.id/website-properti
 
 ![Tangkapan layar PortalProperti](public/og.jpg)
 
@@ -43,4 +43,4 @@ Buka http://localhost:3000. Untuk build produksi: `npm run build` lalu `npm star
 
 ---
 
-Dibuat oleh [PintuWeb](https://www.pintuweb.com), jasa pembuatan website.
+Dibuat oleh [PintuWeb](https://www.pintuweb.id), jasa pembuatan website.

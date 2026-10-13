@@ -3,10 +3,10 @@ import { Manrope } from 'next/font/google';
 
 const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope', weight: ['400', '600', '800'] });
 
-const __jsonld = {"@context":"https://schema.org","@type":"CollectionPage","name":"PortalProperti","description":"Koleksi 4 template marketplace properti: butik editorial, rumah pertama, hunian mewah, dan panduan kawasan","url":"https://www.pintuweb.com/website-properti","isPartOf":{"@type":"WebSite","name":"PintuWeb","url":"https://www.pintuweb.com"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"PintuWeb","item":"https://www.pintuweb.com"},{"@type":"ListItem","position":2,"name":"Website Properti","item":"https://www.pintuweb.com/website-properti"}]}};
+const __jsonld = {"@context":"https://schema.org","@type":"CollectionPage","name":"PortalProperti","description":"Koleksi 4 template marketplace properti: butik editorial, rumah pertama, hunian mewah, dan panduan kawasan","url":"https://www.pintuweb.id/website-properti","isPartOf":{"@type":"WebSite","name":"PintuWeb","url":"https://www.pintuweb.id"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"PintuWeb","item":"https://www.pintuweb.id"},{"@type":"ListItem","position":2,"name":"Website Properti","item":"https://www.pintuweb.id/website-properti"}]}};
 
 export const metadata = {
-  metadataBase: new URL("https://www.pintuweb.com/website-properti"),
+  metadataBase: new URL("https://www.pintuweb.id/website-properti"),
   title: "PortalProperti — Empat Wajah Marketplace Properti",
   description: "Empat template marketplace properti, masing-masing dengan halaman khas: kalkulator biaya beli, perbandingan listing, penyusun kunjungan privat, dan panduan kawasan.",
   applicationName: "PortalProperti",
@@ -14,11 +14,11 @@ export const metadata = {
   authors: [{ name: "PortalProperti" }],
   creator: "PortalProperti",
   publisher: "PortalProperti",
-  alternates: { canonical: "https://www.pintuweb.com/website-properti" },
+  alternates: { canonical: "https://www.pintuweb.id/website-properti" },
   openGraph: {
     type: "website",
     locale: "id_ID",
-    url: "https://www.pintuweb.com/website-properti",
+    url: "https://www.pintuweb.id/website-properti",
     siteName: "PortalProperti",
     title: "PortalProperti — Empat Wajah Marketplace Properti",
     description: "Empat template marketplace properti, masing-masing dengan halaman khas: kalkulator biaya beli, perbandingan listing, penyusun kunjungan privat, dan panduan kawasan.",
