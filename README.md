@@ -14,10 +14,10 @@ Katalog marketplace properti. Gaya cetak biru dengan kartu berbentuk rumah lengk
 
 ## Varian yang dipamerkan (4)
 
-- [Beranda](https://properti-beranda.vercel.app)
-- [Homigo](https://properti-homigo.vercel.app)
-- [Lumora](https://properti-lumora.vercel.app)
-- [Propertia](https://properti-propertia.vercel.app)
+- [Beranda](https://properti-beranda.pintuweb.id)
+- [Homigo](https://properti-homigo.pintuweb.id)
+- [Lumora](https://properti-lumora.pintuweb.id)
+- [Propertia](https://properti-propertia.pintuweb.id)
 
 ## Halaman
 
