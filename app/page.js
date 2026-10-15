@@ -4,8 +4,9 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Home, ArrowDown, ArrowUpRight, MessageCircle, KeyRound, Check, Search, LayoutList, ImageIcon, CalendarCheck, Calculator, Smartphone, ClipboardList, Hammer, ChevronDown } from 'lucide-react';
 import { templates } from './components/templates-data';
+import { LANJUT, GALERI_LAIN, PINTUWEB } from './components/pintuweb';
 
-const WA = 'https://wa.me/6285190931399?text=Halo%2C%20saya%20tertarik%20template%20marketplace%20properti%20di%20PortalProperti';
+const WA = 'https://wa.me/6285190931399?text=Halo%2C%20saya%20tertarik%20template%20marketplace%20properti%20di%20PintuWeb';
 
 const SPESIFIKASI = [
   { icon: Search, title: 'Pencarian & filter', desc: 'Status, jenis, kota, kamar, dan harga — rentang beli dan sewa dipisah, sewa tahunan disetarakan per bulan.' },
@@ -20,11 +21,11 @@ const SERAH = [
   { icon: ClipboardList, no: '01', title: 'Survei Kebutuhan', desc: 'Ceritakan bisnismu: agen, developer, atau listing pribadi.' },
   { icon: Home, no: '02', title: 'Pilih Blok', desc: 'Tentukan wajah yang pas — butik, rumah pertama, mewah, atau kawasan.' },
   { icon: Hammer, no: '03', title: 'Renovasi', desc: 'Kami pasang logo, warna, dan data listing-mu ke dalam template.' },
-  { icon: KeyRound, no: '04', title: 'Serah Terima Kunci', desc: 'Website live + akses penuh jadi milikmu. Garansi tetap berjalan.' },
+  { icon: KeyRound, no: '04', title: 'Serah Terima Kunci', desc: 'Website live, dan setelah pelunasan akses penuhnya jadi milikmu. Garansi 30 hari dan maintenance sesuai paket tetap berjalan.' },
 ];
 
 const TANYA = [
-  { q: 'Bisakah saya mengelola listing sendiri setelah jadi?', a: 'Bisa. Data listing tersimpan terstruktur dan mudah diubah — kami sertakan panduan menambah/mengubah properti. Kalau mau, kami juga bisa bantu kelola.' },
+  { q: 'Bisakah saya mengelola listing sendiri setelah jadi?', a: 'Bisa. Paket Website Properti sudah termasuk panel admin untuk menambah dan mengubah listing, plus panduan singkatnya. Kalau mau, kami juga bisa bantu kelola.' },
   { q: 'Berapa biaya membuat website properti seperti ini?', a: 'Website properti untuk satu agen atau developer Rp2 juta–Rp4,5 juta (5–8 hari kerja). Marketplace multi-agen dengan akun pemasang dan moderasi listing mulai Rp7,5 juta (2–4 minggu). Rinciannya ada di halaman paket PintuWeb.' },
   { q: 'Berapa banyak listing yang bisa ditampung?', a: 'Tidak ada batasan dari sisi template. Puluhan hingga ratusan listing tetap cepat karena halaman dibangun dengan Next.js yang ringan.' },
   { q: 'Apakah cocok untuk agen perorangan, bukan perusahaan?', a: 'Sangat cocok. Template "hangat" dan "editorial" justru dirancang untuk kesan personal — pembeli merasa bicara dengan orang, bukan korporasi.' },
@@ -48,7 +49,10 @@ export default function PortalProperti() {
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5 sm:px-6">
           <a href="#top" className="flex items-center gap-2 text-lg font-extrabold tracking-tight">
             <span className="grid h-9 w-9 place-items-center rounded-xl bg-slatep text-zamrud-terang"><Home size={17} /></span>
-            PortalProperti
+            <span className="flex flex-col leading-none">
+              PintuWeb{' '}
+              <span className="mt-1 text-[10px] font-extrabold uppercase tracking-[0.18em] text-zamrud">Website Properti</span>
+            </span>
           </a>
           <div className="hidden items-center gap-6 text-sm font-bold text-mutedp md:flex" role="navigation" aria-label="Navigasi">
             <a href="#koleksi" className="transition hover:text-zamrud">Perumahan</a>
@@ -145,7 +149,7 @@ export default function PortalProperti() {
           <div className="text-center">
             <p className="text-xs font-extrabold uppercase tracking-[0.25em] text-zamrud">Spesifikasi Bangunan</p>
             <h2 className="mt-3 text-3xl font-extrabold sm:text-4xl">Semua unit <span className="text-zamrud">sudah termasuk</span></h2>
-            <p className="mx-auto mt-4 max-w-xl text-mutedp">Apapun wajah yang kamu pilih, fondasinya sama kokoh — fitur marketplace lengkap sejak hari pertama.</p>
+            <p className="mx-auto mt-4 max-w-xl text-mutedp">Apapun wajah yang kamu pilih, fondasinya sama kokoh — fitur inti listing sudah ada sejak hari pertama.</p>
           </div>
           <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {SPESIFIKASI.map((s, i) => (
@@ -241,7 +245,10 @@ export default function PortalProperti() {
           <div>
             <p className="flex items-center justify-center gap-2 text-lg font-extrabold text-white sm:justify-start">
               <span className="grid h-8 w-8 place-items-center rounded-lg bg-zamrud text-white"><Home size={15} /></span>
-              PortalProperti
+              <span className="flex flex-col text-left leading-none">
+                PintuWeb{' '}
+                <span className="mt-1 text-[10px] font-extrabold uppercase tracking-[0.18em] text-zamrud-terang">Website Properti</span>
+              </span>
             </p>
             <p className="mt-2 text-sm leading-relaxed">Empat wajah marketplace properti — pilih yang paling menyerupai bisnismu.</p>
           </div>
@@ -262,8 +269,29 @@ export default function PortalProperti() {
             </ul>
           </div>
         </div>
-        <p className="mt-10 border-t border-white/10 pt-5 text-center text-xs text-white/75">
-          © {new Date().getFullYear()} PortalProperti · bagian dari PintuWeb — rumah untuk semua template.
+        {/* Lanjut di PintuWeb: harga, layanan, semua demo, dan galeri lain di situs utama */}
+        <nav aria-labelledby="lanjut-pintuweb" className="mx-auto mt-10 max-w-6xl border-t border-white/10 pt-8 text-center text-sm sm:text-left">
+          <p id="lanjut-pintuweb" className="text-xs font-extrabold uppercase tracking-widest text-zamrud-terang">Lanjut di PintuWeb</p>
+          <ul className="mt-4 flex flex-wrap justify-center gap-3 sm:justify-start">
+            {LANJUT.map((l) => (
+              <li key={l.href}>
+                <a href={l.href} className="inline-flex items-center gap-1.5 rounded-full border border-white/25 px-4 py-1.5 text-xs font-extrabold text-white transition hover:border-zamrud-terang hover:bg-zamrud">
+                  {l.label} <ArrowUpRight size={13} aria-hidden="true" />
+                </a>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-6 text-xs font-extrabold uppercase tracking-widest text-white/60">Kompleks lain</p>
+          <ul className="mt-2 flex flex-wrap justify-center gap-x-5 gap-y-2 sm:justify-start">
+            {GALERI_LAIN.map((g) => (
+              <li key={g.path}>
+                <a href={`${PINTUWEB}/${g.path}`} className="underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-zamrud-terang">{g.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <p className="mx-auto mt-8 max-w-6xl border-t border-white/10 pt-5 text-center text-xs text-white/75">
+          © {new Date().getFullYear()} PintuWeb · Galeri Website Properti — rumah untuk semua template.
         </p>
       </footer>
     </div>
