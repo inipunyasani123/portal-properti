@@ -1,15 +1,31 @@
 import './globals.css';
 import { Manrope } from 'next/font/google';
-import { templates } from './components/templates-data';
+import { templates, slugOf } from './components/templates-data';
 
 const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope', weight: ['400', '600', '800'] });
 
 // Merek di hasil pencarian & pratinjau tautan = PintuWeb. Jumlah demo dihitung dari data, bukan ditulis tangan.
 const URL_PORTAL = 'https://www.pintuweb.id/website-properti';
 const TITLE = `Contoh Website Properti: ${templates.length} Demo Siap Coba | PintuWeb`;
-const DESCRIPTION = "Empat template marketplace properti, masing-masing dengan halaman khas: kalkulator biaya beli, perbandingan listing, penyusun kunjungan privat, dan panduan kawasan.";
+const DESCRIPTION = "Empat template marketplace properti dengan halaman khas: kalkulator biaya beli, perbandingan listing, penyusun kunjungan privat, dan panduan kawasan.";
 
-const __jsonld = {"@context":"https://schema.org","@type":"CollectionPage","name":TITLE,"description":DESCRIPTION,"url":URL_PORTAL,"inLanguage":"id-ID","isPartOf":{"@type":"WebSite","name":"PintuWeb","url":"https://www.pintuweb.id"},"publisher":{"@type":"Organization","name":"PintuWeb","url":"https://www.pintuweb.id"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"PintuWeb","item":"https://www.pintuweb.id"},{"@type":"ListItem","position":2,"name":"Website Properti","item":URL_PORTAL}]}};
+// CollectionPage + daftar templatenya (ItemList) + jejak. Data dari templates-data, jadi ikut bertambah sendiri.
+const __jsonld = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: TITLE,
+  description: DESCRIPTION,
+  url: URL_PORTAL,
+  inLanguage: "id-ID",
+  isPartOf: { "@type": "WebSite", name: "PintuWeb", url: "https://www.pintuweb.id" },
+  publisher: { "@type": "Organization", name: "PintuWeb", url: "https://www.pintuweb.id" },
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: templates.length,
+    itemListElement: templates.map((t, i) => ({ "@type": "ListItem", position: i + 1, name: `${t.name} — ${t.gaya}`, url: t.url })),
+  },
+  breadcrumb: { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "PintuWeb", item: "https://www.pintuweb.id" }, { "@type": "ListItem", position: 2, name: "Website Properti", item: URL_PORTAL }] },
+};
 
 export const metadata = {
   metadataBase: new URL(URL_PORTAL),
@@ -47,9 +63,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="id" className={manrope.variable}>
       <body className="antialiased">
-        <main>{children}</main>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(__jsonld) }} />
-        </body>
+        {children}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(__jsonld) }} />
+      </body>
     </html>
   );
 }

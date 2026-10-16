@@ -29,3 +29,6 @@ export const templates = [
     halaman: [['/kawasan', 'Panduan kawasan'], ['/kawasan/sanur-denpasar', 'Sanur'], ['/properti?q=pensiun', 'Untuk pensiun']],
   },
 ];
+
+/** "https://properti-homigo.pintuweb.id" -> "homigo" (sama dengan slug demo di PintuWeb/app/lib/demos.ts). */
+export const slugOf = (t) => new URL(t.url).hostname.split('.')[0].replace(/^properti-/, '');
