@@ -13,14 +13,14 @@ export const wa = (teks) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponen
  */
 export const PAKET = {
   nama: 'Website Properti',
-  mulai: 'Rp2 juta',
-  sampai: 'Rp4,5 juta',
+  mulai: 'Rp1 juta',
+  sampai: 'Rp10 juta',
   waktu: '5–8 hari kerja',
   garansiHari: 30,
 };
 export const PAKET_MARKETPLACE = {
   nama: 'Marketplace Properti',
-  mulai: 'Rp7,5 juta',
+  mulai: 'Rp3 juta',
   waktu: '2–4 minggu',
 };
 
