@@ -1,10 +1,15 @@
+import HARGA from './harga.json';
 // Tautan ke situs utama PintuWeb. Portal ini zona terpisah (basePath /website-properti) di domain yang sama, jadi
 // semua tautan ke situs utama memakai URL absolut dan <a> biasa: next/link akan menempelkan basePath.
+/** Harga & kontak dibaca dari ./harga.json (salinan https://www.pintuweb.id/harga.json, diambil scripts/ambil-harga.mjs saat build). */
+const P = (slug) => HARGA.paket[slug];
+const rp = (n) => (n >= 1e6 ? `Rp${String(n / 1e6).replace('.', ',')} juta` : `Rp${n / 1e3} ribu`);
+
 export const PINTUWEB = 'https://www.pintuweb.id';
 
 /** Kontak dari PintuWeb/app/lib/site.ts (WA_NUMBER, WA_DISPLAY). Ganti di sana = ganti di sini. */
-export const WA_NUMBER = '6285190931399';
-export const WA_DISPLAY = '+62 851 9093 1399';
+export const WA_NUMBER = HARGA.wa.nomor;
+export const WA_DISPLAY = HARGA.wa.tampil;
 export const wa = (teks) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(teks)}`;
 
 /**
@@ -13,15 +18,15 @@ export const wa = (teks) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponen
  */
 export const PAKET = {
   nama: 'Website Properti',
-  mulai: 'Rp1 juta',
-  sampai: 'Rp10 juta',
-  waktu: '5–8 hari kerja',
-  garansiHari: 30,
+  mulai: rp(P('website-properti').mulai),
+  sampai: rp(P('website-properti').sampai),
+  waktu: P('website-properti').waktu,
+  garansiHari: HARGA.garansiHari,
 };
 export const PAKET_MARKETPLACE = {
   nama: 'Marketplace Properti',
-  mulai: 'Rp3 juta',
-  waktu: '2–4 minggu',
+  mulai: rp(P('marketplace-properti').mulai),
+  waktu: P('marketplace-properti').waktu,
 };
 
 /** Galeri yang tayang di www.pintuweb.id/<path> (lihat lib/portals.ts di PintuWeb). */
