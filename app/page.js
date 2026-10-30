@@ -7,10 +7,10 @@ import GaleriMenu from './components/GaleriMenu';
 import BilahLengket from './components/BilahLengket';
 import SorotHash from './components/SorotHash';
 
-const WA = wa('Halo PintuWeb, saya tertarik template website properti. Boleh minta info?');
+const WA = wa('Halo PintuWeb, saya mau website properti. Boleh minta info?');
 const N = templates.length;
 const SLUGS = templates.map(slugOf);
-const WA_BILAH = wa('Halo PintuWeb, saya tertarik website properti. Boleh minta info?');
+const WA_BILAH = wa('Halo PintuWeb, saya mau website properti. Boleh minta info?');
 
 /** Gambar potret ponsel < 768 px, gambar desktop untuk layar lebar (<picture> + <source media>). */
 function Gambar({ t, sizes, priority = false, className }) {
@@ -26,27 +26,28 @@ function Gambar({ t, sizes, priority = false, className }) {
 }
 
 const SPESIFIKASI = [
-  { icon: Search, title: 'Pencarian & filter', desc: 'Status, jenis, kota, kamar, dan harga — rentang beli dan sewa dipisah, sewa tahunan disetarakan per bulan.' },
-  { icon: LayoutList, title: 'Detail listing', desc: 'Spesifikasi lengkap termasuk harga per m², peta tingkat kawasan, dan listing serupa.' },
-  { icon: ImageIcon, title: 'Galeri properti', desc: 'Foto besar dengan miniatur — kesan pertama yang menjual sebelum survei.' },
-  { icon: CalendarCheck, title: 'Jadwal survei', desc: 'Pengunjung memilih hari dan jam di halaman listing. Saat dipasang, bisa diteruskan ke WhatsApp, email, atau CRM.' },
-  { icon: Calculator, title: 'Halaman khas per wajah', desc: 'Kalkulator biaya beli, perbandingan listing, penyusun kunjungan, atau panduan kawasan.' },
-  { icon: Smartphone, title: 'Responsif penuh', desc: 'Diuji sampai lebar 360 px, termasuk tabel perbandingan dan formulir jadwal.' },
+  { icon: Search, title: 'Cari dan saring', desc: 'Pengunjung cari berdasarkan jenis, kota, kamar, dan harga.' },
+  { icon: LayoutList, title: 'Detail properti', desc: 'Harga per m², peta kawasan, dan properti serupa.' },
+  { icon: ImageIcon, title: 'Foto besar', desc: 'Galeri foto yang bikin orang tertarik datang survei.' },
+  { icon: CalendarCheck, title: 'Jadwal survei', desc: 'Pengunjung pilih hari dan jam. Masuk ke WhatsApp atau email-mu.' },
+  { icon: Calculator, title: 'Fitur khas', desc: 'Hitung biaya beli, bandingkan properti, atau panduan kawasan.' },
+  { icon: Smartphone, title: 'Enak dibuka di HP', desc: 'Semua halaman rapi di layar ponsel.' },
 ];
 
 const SERAH = [
-  { icon: ClipboardList, no: '01', title: 'Survei Kebutuhan', desc: 'Ceritakan bisnismu: agen, developer, atau listing pribadi.' },
-  { icon: Home, no: '02', title: 'Pilih Blok', desc: 'Tentukan wajah yang pas — butik, rumah pertama, mewah, atau kawasan.' },
-  { icon: Hammer, no: '03', title: 'Renovasi', desc: 'Kami pasang logo, warna, dan data listing-mu ke dalam template.' },
-  { icon: KeyRound, no: '04', title: 'Serah Terima Kunci', desc: `Website live, dan setelah pelunasan akses penuhnya jadi milikmu. Garansi ${PAKET.garansiHari} hari dan maintenance sesuai paket tetap berjalan.` },
+  { icon: ClipboardList, no: '01', title: 'Ceritakan bisnismu', desc: 'Kamu agen, developer, atau jual properti pribadi?' },
+  { icon: Home, no: '02', title: 'Pilih contoh', desc: 'Pilih tampilan yang paling cocok denganmu.' },
+  { icon: Hammer, no: '03', title: 'Kami sesuaikan', desc: 'Logo, warna, dan data properti kami pasang.' },
+  { icon: KeyRound, no: '04', title: 'Website siap', desc: `Setelah lunas, website jadi milikmu. Ada garansi ${PAKET.garansiHari} hari.` },
 ];
 
 const TANYA = [
-  { q: 'Bisakah saya mengelola listing sendiri setelah jadi?', a: `Bisa. Paket ${PAKET.nama} sudah termasuk panel admin untuk menambah dan mengubah listing, plus panduan singkatnya. Kalau mau, kami juga bisa bantu kelola.` },
-  { q: 'Berapa biaya membuat website properti seperti ini?', a: `Website properti untuk satu agen atau developer ${PAKET.mulai}–${PAKET.sampai} (${PAKET.waktu}). Marketplace multi-agen dengan akun pemasang dan moderasi listing mulai ${PAKET_MARKETPLACE.mulai} (${PAKET_MARKETPLACE.waktu}). Rinciannya ada di halaman paket PintuWeb.` },
-  { q: 'Berapa banyak listing yang bisa ditampung?', a: 'Tidak ada batasan dari sisi template. Puluhan hingga ratusan listing tetap cepat karena halaman dibangun dengan Next.js yang ringan.' },
-  { q: 'Apakah cocok untuk agen perorangan, bukan perusahaan?', a: 'Sangat cocok. Template "hangat" dan "editorial" justru dirancang untuk kesan personal — pembeli merasa bicara dengan orang, bukan korporasi.' },
-  { q: 'Bagaimana calon pembeli menghubungi saya?', a: 'Di demo, setiap listing punya formulir jadwal survei yang hanya menampilkan ringkasan. Saat dipasang untuk bisnismu, formulir itu kami arahkan ke WhatsApp, email, atau sistem yang kamu pakai — lengkap dengan nama properti dan jadwal yang dipilih.' },
+  { q: 'Berapa biaya membuat website properti?', a: `Untuk satu agen atau developer, mulai ${PAKET.mulai} (${PAKET.waktu}). Untuk portal banyak agen sekaligus, mulai ${PAKET_MARKETPLACE.mulai} (${PAKET_MARKETPLACE.waktu}).` },
+  { q: 'Apa bedanya dua jenis itu?', a: 'Website untuk satu agen atau developer berisi properti milikmu saja. Portal banyak agen bisa dipakai banyak agen, masing-masing punya akun dan memasang propertinya sendiri.' },
+  { q: 'Bisa saya kelola sendiri?', a: 'Bisa. Ada halaman pengelola untuk tambah dan ubah properti, plus panduan singkat. Kalau mau, kami bantu kelola.' },
+  { q: 'Berapa banyak properti yang muat?', a: 'Tidak ada batas dari sisi desain. Puluhan sampai ratusan properti tetap cepat dibuka.' },
+  { q: 'Cocok untuk agen perorangan?', a: 'Cocok. Tampilannya bisa dibuat personal, jadi pembeli merasa bicara dengan orang, bukan perusahaan.' },
+  { q: 'Bagaimana calon pembeli menghubungi saya?', a: 'Lewat formulir jadwal survei di tiap properti. Di website milikmu, pesannya kami arahkan ke WhatsApp atau email.' },
 ];
 
 const FAQ_LD = {
@@ -82,10 +83,10 @@ export default function PortalProperti() {
             <Logo />
           </a>
           <nav aria-label="Navigasi halaman" className="hidden items-center gap-6 text-sm font-bold text-mutedp md:flex">
-            <a href="#koleksi" className="transition hover:text-zamrud">Perumahan</a>
-            <a href="#spesifikasi" className="transition hover:text-zamrud">Spesifikasi</a>
-            <a href="#serah" className="transition hover:text-zamrud">Serah Terima</a>
-            <a href="#tanya" className="transition hover:text-zamrud">FAQ</a>
+            <a href="#koleksi" className="transition hover:text-zamrud">Contoh</a>
+            <a href="#spesifikasi" className="transition hover:text-zamrud">Fitur</a>
+            <a href="#serah" className="transition hover:text-zamrud">Cara Pesan</a>
+            <a href="#tanya" className="transition hover:text-zamrud">Tanya Jawab</a>
           </nav>
           <a href={WA} target="_blank" rel="noopener noreferrer" className="shrink-0 rounded-full bg-zamrud px-4 py-2 text-xs font-extrabold text-white transition hover:bg-slatep sm:px-5 sm:text-sm">
             Pesan website properti
@@ -98,17 +99,17 @@ export default function PortalProperti() {
         <section id="hero" className="px-4 pb-8 pt-6 text-center sm:px-6 sm:pb-12 sm:pt-16">
           <div className="mx-auto max-w-3xl">
             <span className="naik hidden items-center sm:inline-flex gap-2 rounded-full bg-white px-4 py-1.5 text-xs font-extrabold uppercase tracking-wide text-zamrud shadow-sm">
-              <KeyRound size={13} aria-hidden="true" /> {N} template · {N} kepribadian pasar
+              <KeyRound size={13} aria-hidden="true" /> {N} contoh · bisa dicoba
             </span>
             <h1 className="text-[2.1rem] font-extrabold leading-[1.04] sm:mt-6 sm:text-6xl md:text-7xl">
-              Satu industri,<br /><span className="text-zamrud">empat wajah</span> berbeda.
+              Website properti,<br /><span className="text-zamrud">empat gaya</span> pilihan.
             </h1>
             <p className="mx-auto mt-5 hidden max-w-xl text-base text-mutedp sm:block sm:text-lg">
-              Marketplace properti tidak harus seragam. Butik yang dikurasi, rumah pertama yang mudah dibandingkan, hunian mewah yang dikunjungi privat, atau panduan kawasan — pilih wajah bisnismu.
+              Pilih gaya yang cocok dengan bisnismu, lalu coba langsung.
             </p>
             <div className="naik naik-2 mt-5 flex flex-col items-center gap-3 sm:mt-9 sm:gap-4">
               <a href="#koleksi" className="inline-flex items-center gap-2 rounded-full bg-slatep px-7 py-3.5 text-sm font-extrabold text-white transition hover:bg-zamrud sm:px-8 sm:py-4">
-                Masuk ke Perumahan <ArrowDown size={16} aria-hidden="true" />
+                Lihat contoh <ArrowDown size={16} aria-hidden="true" />
               </a>
               {/* Ringkasan paket: angka dari PAKET (PintuWeb packages.ts) */}
               <p className="text-sm font-semibold text-slatep/80">Mulai <strong className="font-extrabold text-zamrud">{PAKET.mulai}</strong> <span className="whitespace-nowrap"><span aria-hidden="true" className="mx-1.5 text-zamrud">·</span>{PAKET.waktu}</span></p>
@@ -134,7 +135,7 @@ export default function PortalProperti() {
         </section>
 
         {/* Koleksi — kartu rumah */}
-        <section id="koleksi" aria-label="Empat template website properti" className="scroll-mt-[88px] px-4 pb-16 sm:px-6 sm:pb-20">
+        <section id="koleksi" aria-label="Contoh website properti" className="scroll-mt-[88px] px-4 pb-16 sm:px-6 sm:pb-20">
           <ul className="mx-auto grid max-w-6xl gap-x-10 gap-y-14 md:grid-cols-2 md:gap-y-16">
             {templates.map((t, i) => {
               const slug = slugOf(t);
@@ -183,7 +184,7 @@ export default function PortalProperti() {
                       <a href={t.url} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1.5 rounded-full bg-slatep px-5 text-sm font-extrabold text-white transition hover:bg-zamrud">
                         Buka demo<span className="sr-only"> {t.name} (tab baru)</span> <ArrowUpRight size={15} aria-hidden="true" />
                       </a>
-                      <a href={wa(`Halo PintuWeb, saya tertarik website properti seperti contoh ${t.name} (${t.url}). Boleh minta info?`)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1.5 rounded-full border-2 border-zamrud px-5 text-sm font-extrabold text-zamrud transition hover:bg-zamrud hover:text-white">
+                      <a href={wa(`Halo PintuWeb, saya mau website properti seperti contoh ${t.name} (${t.url}). Boleh minta info?`)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1.5 rounded-full border-2 border-zamrud px-5 text-sm font-extrabold text-zamrud transition hover:bg-zamrud hover:text-white">
                         Pesan yang mirip<span className="sr-only"> dengan {t.name} lewat WhatsApp</span>
                       </a>
                     </div>
@@ -199,9 +200,9 @@ export default function PortalProperti() {
         <section id="spesifikasi" aria-labelledby="judul-spesifikasi" className="scroll-mt-[64px] border-t border-slatep/10 bg-white px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
           <div className="mx-auto max-w-6xl">
             <div className="sm:text-center">
-              <p className="text-xs font-extrabold uppercase tracking-[0.25em] text-zamrud">Spesifikasi Bangunan</p>
-              <h2 id="judul-spesifikasi" className="mt-3 text-3xl font-extrabold sm:text-4xl">Semua unit <span className="text-zamrud">sudah termasuk</span></h2>
-              <p className="mt-3 max-w-xl text-mutedp sm:mx-auto sm:mt-4">Apapun wajah yang kamu pilih, fondasinya sama kokoh — fitur inti listing sudah ada sejak hari pertama.</p>
+              <p className="text-xs font-extrabold uppercase tracking-[0.25em] text-zamrud">Fitur</p>
+              <h2 id="judul-spesifikasi" className="mt-3 text-3xl font-extrabold sm:text-4xl">Fitur yang <span className="text-zamrud">kamu dapat</span></h2>
+              <p className="mt-3 max-w-xl text-mutedp sm:mx-auto sm:mt-4">Semua contoh punya fitur ini.</p>
             </div>
             <ul className="mt-8 grid grid-cols-1 gap-3 sm:mt-12 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
               {SPESIFIKASI.map((s) => (
@@ -221,8 +222,8 @@ export default function PortalProperti() {
         <section id="serah" aria-labelledby="judul-serah" className="scroll-mt-[64px] px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
           <div className="mx-auto max-w-6xl">
             <div className="sm:text-center">
-              <p className="text-xs font-extrabold uppercase tracking-[0.25em] text-zamrud">Proses</p>
-              <h2 id="judul-serah" className="mt-3 text-3xl font-extrabold sm:text-4xl">Empat langkah sampai <span className="text-zamrud">serah terima kunci</span></h2>
+              <p className="text-xs font-extrabold uppercase tracking-[0.25em] text-zamrud">Cara Pesan</p>
+              <h2 id="judul-serah" className="mt-3 text-3xl font-extrabold sm:text-4xl">Empat langkah <span className="text-zamrud">sampai jadi</span></h2>
             </div>
             <ol className="relative mt-8 grid grid-cols-1 gap-5 sm:mt-14 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4">
               <span className="absolute left-0 right-0 top-7 hidden h-0.5 border-t-2 border-dashed border-zamrud/40 lg:block" aria-hidden="true" />
@@ -245,8 +246,8 @@ export default function PortalProperti() {
         <section id="tanya" aria-labelledby="judul-tanya" className="scroll-mt-[64px] border-t border-slatep/10 bg-white px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
           <div className="mx-auto max-w-3xl">
             <div className="sm:text-center">
-              <p className="text-xs font-extrabold uppercase tracking-[0.25em] text-zamrud">FAQ</p>
-              <h2 id="judul-tanya" className="mt-3 text-3xl font-extrabold sm:text-4xl">Sebelum kamu <span className="text-zamrud">pindah masuk</span></h2>
+              <p className="text-xs font-extrabold uppercase tracking-[0.25em] text-zamrud">Tanya Jawab</p>
+              <h2 id="judul-tanya" className="mt-3 text-3xl font-extrabold sm:text-4xl">Yang sering <span className="text-zamrud">ditanya</span></h2>
             </div>
             <div className="mt-8 space-y-3 sm:mt-10">
               {TANYA.map((t, i) => (
@@ -270,8 +271,8 @@ export default function PortalProperti() {
         <section className="bg-slatep px-4 py-16 text-center text-white sm:px-6">
           <div className="mx-auto max-w-xl">
             <span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-zamrud"><KeyRound size={24} aria-hidden="true" /></span>
-            <h2 className="mt-6 text-3xl font-extrabold leading-tight md:text-4xl">Kuncinya sudah di tangan kami.</h2>
-            <p className="mt-3 text-white/80">Pilih wajah yang pas untuk bisnismu — kami pasang logo, warna, dan listing-mu ke dalamnya.</p>
+            <h2 className="mt-6 text-3xl font-extrabold leading-tight md:text-4xl">Siap punya website properti?</h2>
+            <p className="mt-3 text-white/80">Ceritakan bisnismu, kami bantu buatkan.</p>
             <a href={WA} target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex items-center gap-2 rounded-full bg-zamrud px-8 py-4 text-sm font-extrabold text-white transition hover:scale-[1.03] active:scale-95">
               <MessageCircle size={16} aria-hidden="true" /> Chat WhatsApp
             </a>
@@ -283,15 +284,15 @@ export default function PortalProperti() {
         <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3">
           <div className="col-span-2 sm:col-span-1">
             <p className="flex items-center gap-2 text-lg font-extrabold text-white"><Logo kecil /></p>
-            <p className="mt-3 max-w-xs text-sm leading-relaxed">{N} wajah marketplace properti — pilih yang paling menyerupai bisnismu.</p>
+            <p className="mt-3 max-w-xs text-sm leading-relaxed">{N} contoh website properti. Pilih yang paling cocok denganmu.</p>
           </div>
           <nav aria-labelledby="kaki-jelajahi" className="text-sm">
             <p id="kaki-jelajahi" className="text-xs font-extrabold uppercase tracking-widest text-zamrud-terang">Jelajahi</p>
             <ul className="mt-3 space-y-1">
-              <li><a href="#koleksi" className="inline-block py-1 transition hover:text-white">Kompleks Template</a></li>
-              <li><a href="#spesifikasi" className="inline-block py-1 transition hover:text-white">Spesifikasi</a></li>
-              <li><a href="#serah" className="inline-block py-1 transition hover:text-white">Proses Serah Terima</a></li>
-              <li><a href="#tanya" className="inline-block py-1 transition hover:text-white">FAQ</a></li>
+              <li><a href="#koleksi" className="inline-block py-1 transition hover:text-white">Semua Contoh</a></li>
+              <li><a href="#spesifikasi" className="inline-block py-1 transition hover:text-white">Fitur</a></li>
+              <li><a href="#serah" className="inline-block py-1 transition hover:text-white">Cara Pesan</a></li>
+              <li><a href="#tanya" className="inline-block py-1 transition hover:text-white">Tanya Jawab</a></li>
             </ul>
           </nav>
           <div className="text-sm">
@@ -320,7 +321,7 @@ export default function PortalProperti() {
               <li key={b.href}><a href={b.href} className="inline-block py-1 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-zamrud-terang">{b.label}</a></li>
             ))}
           </ul>
-          <p className="mt-6 text-xs font-extrabold uppercase tracking-widest text-white/70">Kompleks lain</p>
+          <p className="mt-6 text-xs font-extrabold uppercase tracking-widest text-white/70">Galeri lain</p>
           <ul className="mt-2 flex flex-wrap gap-x-5 gap-y-1">
             {GALERI_LAIN.map((g) => (
               <li key={g.path}>
@@ -330,7 +331,7 @@ export default function PortalProperti() {
           </ul>
         </nav>
         <p className="mx-auto mt-8 max-w-6xl border-t border-white/10 pt-5 text-xs text-white/75 sm:text-center">
-          © {new Date().getFullYear()} PintuWeb · Galeri Website Properti — rumah untuk semua template.
+          © {new Date().getFullYear()} PintuWeb · Galeri Website Properti
         </p>
       </footer>
       <BilahLengket waHref={WA_BILAH} />

@@ -7,7 +7,7 @@ const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope', weight
 // Merek di hasil pencarian & pratinjau tautan = PintuWeb. Jumlah demo dihitung dari data, bukan ditulis tangan.
 const URL_PORTAL = 'https://www.pintuweb.id/website-properti';
 const TITLE = `Contoh Website Properti: ${templates.length} Demo Siap Coba | PintuWeb`;
-const DESCRIPTION = "Empat template marketplace properti dengan halaman khas: kalkulator biaya beli, perbandingan listing, penyusun kunjungan privat, dan panduan kawasan.";
+const DESCRIPTION = "Contoh website properti untuk agen dan developer: hitung biaya beli, bandingkan rumah, dan jadwalkan kunjungan. Bisa dicoba.";
 
 // CollectionPage + daftar templatenya (ItemList) + jejak. Data dari templates-data, jadi ikut bertambah sendiri.
 const __jsonld = {
