@@ -68,3 +68,9 @@ footer :focus-visible, .bg-slatep :focus-visible { outline-color: var(--color-za
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
   .group:hover .rumah-wrap { transform: none; }
 }
+
+/* Sorot kartu saat dibuka lewat #slug: rumah bercahaya zamrud ±2 detik (bukan kedip) */
+li.sorot .rumah-wrap { filter: drop-shadow(0 0 2px var(--color-zamrud-terang)) drop-shadow(0 0 16px rgba(4, 120, 87, 0.6)); transform: translateY(-6px); }
+li.sorot h2 { background: linear-gradient(transparent 62%, rgba(52, 211, 153, 0.5) 62%); }
+.geser { scrollbar-width: none; }
+.geser::-webkit-scrollbar { display: none; }

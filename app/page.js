@@ -1,10 +1,29 @@
-import Image from 'next/image';
+/* eslint-disable @next/next/no-img-element */
+import Image, { getImageProps } from 'next/image';
 import { Home, ArrowDown, ArrowUpRight, MessageCircle, KeyRound, Check, Search, LayoutList, ImageIcon, CalendarCheck, Calculator, Smartphone, ClipboardList, Hammer, ChevronDown } from 'lucide-react';
 import { templates, slugOf } from './components/templates-data';
-import { LANJUT, GALERI_LAIN, PINTUWEB, PAKET, PAKET_MARKETPLACE, WA_DISPLAY, wa } from './components/pintuweb';
+import { LANJUT, GALERI_LAIN, BACA_JUGA, PINTUWEB, PAKET, PAKET_MARKETPLACE, WA_DISPLAY, wa } from './components/pintuweb';
+import GaleriMenu from './components/GaleriMenu';
+import BilahLengket from './components/BilahLengket';
+import SorotHash from './components/SorotHash';
 
 const WA = wa('Halo PintuWeb, saya tertarik template website properti. Boleh minta info?');
 const N = templates.length;
+const SLUGS = templates.map(slugOf);
+const WA_BILAH = wa('Halo PintuWeb, saya tertarik website properti. Boleh minta info?');
+
+/** Gambar potret ponsel < 768 px, gambar desktop untuk layar lebar (<picture> + <source media>). */
+function Gambar({ t, sizes, priority = false, className }) {
+  const { props: d } = getImageProps({ src: t.image, alt: '', width: 1600, height: 1000, sizes, priority });
+  const { props: m } = getImageProps({ src: t.imageM, alt: '', width: 780, height: 1688, sizes, priority });
+  return (
+    <picture>
+      <source media="(min-width: 768px)" srcSet={d.srcSet} sizes={sizes} />
+      <source media="(max-width: 767px)" srcSet={m.srcSet} sizes={sizes} />
+      <img src={d.src} alt="" width={1600} height={1000} sizes={sizes} className={className} loading={priority ? 'eager' : 'lazy'} fetchPriority={priority ? 'high' : undefined} decoding="async" />
+    </picture>
+  );
+}
 
 const SPESIFIKASI = [
   { icon: Search, title: 'Pencarian & filter', desc: 'Status, jenis, kota, kamar, dan harga — rentang beli dan sewa dipisah, sewa tahunan disetarakan per bulan.' },
@@ -39,7 +58,9 @@ const FAQ_LD = {
 function Logo({ kecil = false }) {
   return (
     <>
-      <span className={`grid shrink-0 place-items-center ${kecil ? 'h-8 w-8 rounded-lg bg-zamrud text-white' : 'h-9 w-9 rounded-xl bg-slatep text-zamrud-terang'}`}><Home size={kecil ? 15 : 17} aria-hidden="true" /></span>
+      {kecil
+        ? <span className="grid h-9 shrink-0 place-items-center rounded-lg bg-white px-2"><img src="/website-properti/images/logo-pintuweb.png" alt="" width={367} height={512} className="h-6 w-auto" /></span>
+        : <img src="/website-properti/images/logo-pintuweb.png" alt="" width={367} height={512} className="h-8 w-auto shrink-0" />}
       <span className="flex flex-col text-left leading-none">
         PintuWeb{' '}
         <span className={`mt-1 text-[10px] font-extrabold uppercase tracking-[0.18em] ${kecil ? 'text-zamrud-terang' : 'text-zamrud'}`}>Website Properti</span>
@@ -52,14 +73,8 @@ export default function PortalProperti() {
   return (
     <div id="top" className="blueprint min-h-screen">
       <a href="#konten" className="lewati">Lewati ke konten</a>
-      {/* Jejak: portal ini bagian dari PintuWeb */}
-      <nav aria-label="Jejak" className="bg-slatep text-xs text-kabut">
-        <ol className="mx-auto flex max-w-6xl items-center gap-2 px-4 py-1.5 sm:px-6">
-          <li><a href={PINTUWEB} className="font-semibold underline-offset-4 hover:underline">PintuWeb</a></li>
-          <li aria-hidden="true" className="opacity-60">/</li>
-          <li aria-current="page">Website Properti</li>
-        </ol>
-      </nav>
+      {/* Jejak + menu galeri lain */}
+      <GaleriMenu pintuweb={PINTUWEB} galeri={GALERI_LAIN} nama="Properti" />
 
       <header className="sticky top-0 z-40 border-b border-slatep/10 bg-kabut/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-3.5">
@@ -72,49 +87,66 @@ export default function PortalProperti() {
             <a href="#serah" className="transition hover:text-zamrud">Serah Terima</a>
             <a href="#tanya" className="transition hover:text-zamrud">FAQ</a>
           </nav>
-          <a href={WA} target="_blank" rel="noopener noreferrer" className="shrink-0 rounded-full bg-zamrud px-5 py-2 text-sm font-extrabold text-white transition hover:bg-slatep">
-            Konsultasi
+          <a href={WA} target="_blank" rel="noopener noreferrer" className="shrink-0 rounded-full bg-zamrud px-4 py-2 text-xs font-extrabold text-white transition hover:bg-slatep sm:px-5 sm:text-sm">
+            Pesan website properti
           </a>
         </div>
       </header>
 
       <main id="konten" tabIndex={-1}>
         {/* Hero */}
-        <section className="px-4 pb-10 pt-10 text-center sm:px-6 sm:pb-12 sm:pt-16">
+        <section id="hero" className="px-4 pb-8 pt-6 text-center sm:px-6 sm:pb-12 sm:pt-16">
           <div className="mx-auto max-w-3xl">
-            <span className="naik inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-xs font-extrabold uppercase tracking-wide text-zamrud shadow-sm">
+            <span className="naik hidden items-center sm:inline-flex gap-2 rounded-full bg-white px-4 py-1.5 text-xs font-extrabold uppercase tracking-wide text-zamrud shadow-sm">
               <KeyRound size={13} aria-hidden="true" /> {N} template · {N} kepribadian pasar
             </span>
-            <h1 className="mt-6 text-[2.6rem] font-extrabold leading-[1.04] sm:text-6xl md:text-7xl">
+            <h1 className="text-[2.1rem] font-extrabold leading-[1.04] sm:mt-6 sm:text-6xl md:text-7xl">
               Satu industri,<br /><span className="text-zamrud">empat wajah</span> berbeda.
             </h1>
-            <p className="mx-auto mt-5 max-w-xl text-base text-mutedp sm:text-lg">
+            <p className="mx-auto mt-5 hidden max-w-xl text-base text-mutedp sm:block sm:text-lg">
               Marketplace properti tidak harus seragam. Butik yang dikurasi, rumah pertama yang mudah dibandingkan, hunian mewah yang dikunjungi privat, atau panduan kawasan — pilih wajah bisnismu.
             </p>
-            <div className="naik naik-2 mt-8 flex flex-col items-center gap-4 sm:mt-9">
-              <a href="#koleksi" className="inline-flex items-center gap-2 rounded-full bg-slatep px-8 py-4 text-sm font-extrabold text-white transition hover:bg-zamrud">
+            <div className="naik naik-2 mt-5 flex flex-col items-center gap-3 sm:mt-9 sm:gap-4">
+              <a href="#koleksi" className="inline-flex items-center gap-2 rounded-full bg-slatep px-7 py-3.5 text-sm font-extrabold text-white transition hover:bg-zamrud sm:px-8 sm:py-4">
                 Masuk ke Perumahan <ArrowDown size={16} aria-hidden="true" />
               </a>
               {/* Ringkasan paket: angka dari PAKET (PintuWeb packages.ts) */}
               <p className="text-sm font-semibold text-slatep/80">Mulai <strong className="font-extrabold text-zamrud">{PAKET.mulai}</strong> <span className="whitespace-nowrap"><span aria-hidden="true" className="mx-1.5 text-zamrud">·</span>{PAKET.waktu}</span></p>
             </div>
           </div>
+          {/* Strip demo (ponsel): geser mendatar, menaut ke kartu lewat #slug */}
+          <div className="mt-5 md:hidden">
+            <p className="text-xs font-extrabold uppercase tracking-widest text-mutedp">Geser untuk melihat {N} demo</p>
+            <ul className="geser -mx-4 mt-3 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 text-start" aria-label="Pintasan demo">
+              {templates.map((t, i) => (
+                <li key={t.name} className="w-[104px] shrink-0 snap-start">
+                  <a href={`#${SLUGS[i]}`} className="block">
+                    <span className="block aspect-[9/16] overflow-hidden rounded-xl border-2 border-white shadow-md ring-1 ring-slatep/15">
+                      <Image src={t.imageM} alt="" width={780} height={1688} sizes="104px" className="h-full w-full object-cover object-top" />
+                    </span>
+                    <span className="mt-1.5 block text-sm font-extrabold leading-tight">{t.name}</span>
+                    <span className="block text-[11px] font-bold text-mutedp">{t.gaya}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </section>
 
         {/* Koleksi — kartu rumah */}
-        <section id="koleksi" aria-label="Empat template website properti" className="scroll-mt-[64px] px-4 pb-16 sm:px-6 sm:pb-20">
+        <section id="koleksi" aria-label="Empat template website properti" className="scroll-mt-[88px] px-4 pb-16 sm:px-6 sm:pb-20">
           <ul className="mx-auto grid max-w-6xl gap-x-10 gap-y-14 md:grid-cols-2 md:gap-y-16">
             {templates.map((t, i) => {
               const slug = slugOf(t);
               return (
-                <li key={t.name} id={slug} className="group flex flex-col">
+                <li key={t.name} id={slug} className="group flex scroll-mt-24 flex-col">
                   {/* Rumah: pratinjau (tautan untuk tetikus; papan ketik memakai tombol "Buka demo") */}
                   <div className="rumah-wrap relative">
                     <span className="cerobong" aria-hidden="true" />
                     <a href={t.url} target="_blank" rel="noopener noreferrer" className="block" tabIndex={-1} aria-hidden="true">
                       <div className="rumah relative bg-white p-2 pt-[12%]">
-                        <div className="relative aspect-[16/10] overflow-hidden rounded-lg">
-                          <Image src={t.image} alt="" fill sizes="(max-width: 767px) calc(100vw - 48px), 520px" className="object-cover object-top" priority={i === 0} />
+                        <div className="relative aspect-[4/5] overflow-hidden rounded-lg md:aspect-[16/10]">
+                          <Gambar t={t} sizes="(max-width: 767px) calc(100vw - 48px), 520px" className="absolute inset-0 h-full w-full object-cover object-top" priority={i === 0} />
                         </div>
                       </div>
                     </a>
@@ -151,10 +183,11 @@ export default function PortalProperti() {
                       <a href={t.url} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1.5 rounded-full bg-slatep px-5 text-sm font-extrabold text-white transition hover:bg-zamrud">
                         Buka demo<span className="sr-only"> {t.name} (tab baru)</span> <ArrowUpRight size={15} aria-hidden="true" />
                       </a>
-                      <a href={wa(`Halo PintuWeb, saya tertarik template website properti ${t.name} (${t.gaya}). Boleh minta info?`)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1.5 rounded-full border-2 border-zamrud px-5 text-sm font-extrabold text-zamrud transition hover:bg-zamrud hover:text-white">
-                        Pesan<span className="sr-only"> template {t.name} lewat WhatsApp</span>
+                      <a href={wa(`Halo PintuWeb, saya tertarik website properti seperti contoh ${t.name} (${t.url}). Boleh minta info?`)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1.5 rounded-full border-2 border-zamrud px-5 text-sm font-extrabold text-zamrud transition hover:bg-zamrud hover:text-white">
+                        Pesan yang mirip<span className="sr-only"> dengan {t.name} lewat WhatsApp</span>
                       </a>
                     </div>
+                    <p className="mt-3 text-xs font-bold text-mutedp">Website Properti mulai <span className="text-zamrud">{PAKET.mulai}</span> · {PAKET.waktu}</p>
                   </div>
                 </li>
               );
@@ -281,6 +314,12 @@ export default function PortalProperti() {
               </li>
             ))}
           </ul>
+          <p className="mt-6 text-xs font-extrabold uppercase tracking-widest text-white/70">Baca juga</p>
+          <ul className="mt-2 flex flex-wrap gap-x-5 gap-y-1">
+            {BACA_JUGA.map((b) => (
+              <li key={b.href}><a href={b.href} className="inline-block py-1 underline decoration-white/25 underline-offset-4 transition hover:text-white hover:decoration-zamrud-terang">{b.label}</a></li>
+            ))}
+          </ul>
           <p className="mt-6 text-xs font-extrabold uppercase tracking-widest text-white/70">Kompleks lain</p>
           <ul className="mt-2 flex flex-wrap gap-x-5 gap-y-1">
             {GALERI_LAIN.map((g) => (
@@ -294,6 +333,8 @@ export default function PortalProperti() {
           © {new Date().getFullYear()} PintuWeb · Galeri Website Properti — rumah untuk semua template.
         </p>
       </footer>
+      <BilahLengket waHref={WA_BILAH} />
+      <SorotHash slugs={SLUGS} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_LD) }} />
     </div>
   );

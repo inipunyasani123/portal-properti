@@ -19,6 +19,10 @@ Katalog marketplace properti. Gaya cetak biru dengan kartu berbentuk rumah lengk
 - [Lumora](https://properti-lumora.pintuweb.id)
 - [Propertia](https://properti-propertia.pintuweb.id)
 
+## Tautan langsung per demo
+
+Setiap kartu punya `id` = slug demo: `propertia`, `homigo`, `lumora`, `beranda`. Buka `/website-properti#lumora` untuk menggulir ke kartunya dan menyorotnya ±2 detik. Gambar kartu: `public/images/properti/<slug>.webp` (desktop) dan `<slug>-m.webp` (potret ponsel); buat varian dengan `node scripts/gambar-varian.mjs` (sumber di SUMBER.md).
+
 ## Halaman
 
 `/`
