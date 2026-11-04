@@ -20,6 +20,8 @@ export default function BilahLengket({ waHref }) {
   const tampak = heroLewat && !footerTampak;
   return (
     <div
+      role="region"
+      aria-label="Aksi cepat"
       aria-hidden={!tampak}
       className={`fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-slatep/95 px-4 pt-3 backdrop-blur-xl transition-transform duration-300 md:hidden ${tampak ? 'translate-y-0' : 'invisible translate-y-full'}`}
       style={{ paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom))' }}

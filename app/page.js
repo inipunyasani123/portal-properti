@@ -89,7 +89,7 @@ export default function PortalProperti() {
             <a href="#tanya" className="transition hover:text-zamrud">Tanya Jawab</a>
           </nav>
           <a href={WA} target="_blank" rel="noopener noreferrer" className="shrink-0 rounded-full bg-zamrud px-4 py-2 text-xs font-extrabold text-white transition hover:bg-slatep sm:px-5 sm:text-sm">
-            Pesan website properti
+            Pesan<span className="max-[359px]:sr-only"> website properti</span>
           </a>
         </div>
       </header>
